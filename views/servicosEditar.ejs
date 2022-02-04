@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head'); %>
+
+<%- include('./partials/header'); %>
+  <main class="admin">
+    <div class="container">
+      <h1>Painel Administrativo</h1>
+      <a href=""> voltar para lista de serviços</a>
+      <% if(typeof servico !=='undefined' ) { %>
+        <form action="/admin/servicos/<%= servico.id %>/editar?_method=PUT" enctype="multipart/form-data" method="POST">
+          <fieldset>
+            <legend>Editar Serviço</legend>
+
+            
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="nome" value="<%= servico.nome %>" required>
+            
+            <label for="descricao">Descrição</label>
+            <textarea name="descricao" id="descricao"><%= servico.descricao %></textarea>
+            
+            <label for="preco">Preço</label>
+            <input type="number" name="preco" id="preco" value="<%= servico.preco %>">
+
+            <img src="/uploads/<%= servico.fotoUrl %>" alt="">
+
+            <label for="ilustracao">Ilustracao</label>
+            <input type="file" name="ilustracao" id="ilustracao" />
+
+            <button type="submit" class="btn btn-primary">Enviar</button>
+          </fieldset>
+        </form>
+        <% } %>
+    </div>
+  </main>
+  <%- include('./partials/footer'); %>
+
+	</body>
+
+</html>
